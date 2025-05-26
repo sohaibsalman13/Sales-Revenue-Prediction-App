@@ -7,14 +7,16 @@ This project is a complete machine learning pipeline built to predict **Total Pr
 -  **Data Integration**: Connected Amazon S3 with Amazon Redshift to store and query sales data efficiently.
 -  **Data Cleaning & Transformation**: Used complex SQL queries for imputing missing values, generating new features, and cleaning raw data. The code can be found in the folder `SQL scripts`.
   
--  **Exploratory Data Analysis (EDA)**:
+  **Exploratory Data Analysis (EDA)**:
   - Univariate and bivariate analysis
   - Cramér's V for categorical relationships
   - KDE plots, scatter plots, heatmaps
--  **Feature Engineering**:
+    
+  **Feature Engineering**:
   - Generated features like `freight_ratio`, `avg_price_per_item`, `order_duration_days`
   - Scaled numerical features and one-hot encoded categoricals using `scikit-learn`
--  **Model Training & Evaluation**:
+    
+  **Model Training & Evaluation**:
   - Regression: Trained `XGBoostRegressor` and `RandomForestRegressor` for predicting `Total Price per Order`
   - Classification: Used `RandomForestClassifier` to predict `Late Delivery Indicator`
   - Evaluated models with metrics such as MSE, R², ROC AUC, and confusion matrix
