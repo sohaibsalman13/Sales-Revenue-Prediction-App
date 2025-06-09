@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import joblib
 import plotly.express as px
 
 st.set_page_config(page_title="Revenue Forecasting", layout="wide")
@@ -9,15 +10,21 @@ st.set_page_config(page_title="Revenue Forecasting", layout="wide")
 # Loading models
 @st.cache_resource
 def load_models():
-    with open("rf_reg.pkl", "rb") as f1, \
-         open("rf_reg2.pkl", "rb") as f2, \
-         open("rf_cl.pkl", "rb") as f3:
-        return {
-            "Revenue per Order Predictor": pickle.load(f1),
-            "Revenue per Day Predictor": pickle.load(f2),
-            "Late Delivery Predictor": pickle.load(f3)
+    return {
+        "Revenue per Order Predictor": joblib.load("rf_reg_compressed.pkl"),
+        "Revenue per Day Predictor": joblib.load("rf_reg2_compressed.pkl"),
+        "Late Delivery Predictor": joblib.load("rf_cl_compressed.pkl")
+    }
+# def load_models():
+#     with open("rf_reg.pkl", "rb") as f1, \
+#          open("rf_reg2.pkl", "rb") as f2, \
+#          open("rf_cl.pkl", "rb") as f3:
+#         return {
+#             "Revenue per Order Predictor": pickle.load(f1),
+#             "Revenue per Day Predictor": pickle.load(f2),
+#             "Late Delivery Predictor": pickle.load(f3)
             
-        }
+#         }
 
 models = load_models()
 
