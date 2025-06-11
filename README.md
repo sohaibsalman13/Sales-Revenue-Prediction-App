@@ -1,12 +1,14 @@
-# Sales & Revenue Prediction Model
+# Sales & Revenue Prediction App
 
-This project is a complete machine learning pipeline built to predict **Total Price per Order**,**Total Order Value per Customer** and classify **Late Delivery Indicator** using real-world sales data. It combines SQL-based data transformation, in-depth exploratory data analysis (EDA), and supervised ML models using Python.
+This project is a complete machine learning pipeline built to predict **Total Revenue per Order**,**Total Order Revenue per Day** and **Late Delivery Indicator** using real-world sales data. It combines SQL-based data transformation, in-depth exploratory data analysis (EDA), supervised ML models using Python and a prediction app using Streamlit. 
 
 ## Features
 
-**Data Integration**: Connected Amazon S3 with Amazon Redshift to store and query sales data efficiently.
+**Data**: The raw input dataset for the models is the real world supermarket data from Brazil (2016-2018).
 
-**Data Cleaning & Transformation**: Used PostgreSQL queries for imputing missing values, generating new features, and cleaning raw data. The code can be found in the folder `SQL scripts`.
+**Integration**: Amazon S3 is used for raw data storage and connected with Amazon Redshift to store and query sales data efficiently.
+
+**Data Cleaning & Transformation**: Used PostgreSQL queries for imputing missing values, generating new features, and cleaning raw data in Redshift. The code can be found in the folder `SQL scripts`.
   
 **Exploratory Data Analysis (EDA)**:
   - Univariate and bivariate analysis
@@ -17,22 +19,20 @@ This project is a complete machine learning pipeline built to predict **Total Pr
   - Scaled numerical features and one-hot encoded categoricals using `scikit-learn`
     
 **Model Training & Evaluation**:
-  - Regression: Trained `XGBoostRegressor` and `RandomForestRegressor` for predicting `Total Price per Order`
+  - Regression: Trained `XGBoostRegressor` and `RandomForestRegressor` for predicting `Total Revenue per Order`
   - Classification: Used `RandomForestClassifier` to predict `Late Delivery Indicator`
-  - Regression: Used `XGBoostRegressor` for predicting `Total Order Value per Customer`
+  - Regression: Used `RandomForestRegressor` for predicting `Total Revenue per Day`
   - Evaluated models with metrics such as MSE, R², ROC AUC, and confusion matrix
+
+**Web App**: Integrated the models with a web application using StreamLit where business users can input order features and obtain real-time predictions for revenue and late delivery likelihood. The screenshot of the app are added below.
 
 
 ##  Tech Stack
 
 - **Languages**: Python, SQL
-- **Libraries**: Pandas, NumPy, Seaborn, Scikit-learn, XGBoost, Matplotlib
+- **Libraries**: Pandas, NumPy, Seaborn, Scikit-learn, XGBoost, Matplotlib, StreamLit
 - **Cloud**: AWS Redshift, S3, Boto3
 - **Tools**: Jupyter Notebook, Git
 
-## Sample Results
-
-- **XGBoost Regression**: R² = 0.98, MSE = 1019.4  
-- **Random Forest Classifier**: Accuracy = 91%, ROC AUC = 0.94
 
 
