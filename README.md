@@ -25,6 +25,8 @@ This project is a complete machine learning pipeline built to predict **Total Re
   - Evaluated models with metrics such as MSE, R², ROC AUC, and confusion matrix
 
 **Web App**: Integrated the models with a web application using StreamLit where business users can input order features and obtain real-time predictions for revenue and late delivery likelihood. The screenshot of the app are added below.
+![Screenshot 2025-06-12 at 12 13 53 AM](https://github.com/user-attachments/assets/dc93cfac-922e-4d63-8a39-95e25b57b95b)
+![Screenshot 2025-06-12 at 12 14 22 AM](https://github.com/user-attachments/assets/9dd9f63a-eece-40c8-a915-b2172cc951b9)
 
 
 ##  Tech Stack
