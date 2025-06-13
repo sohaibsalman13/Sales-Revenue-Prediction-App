@@ -46,7 +46,7 @@ To create your own app using the models, follow these steps:
  ```bash 
     git clone https://github.com/sohaibsalman13/Sales-Revenue-Prediction-App
  ```
-Change to the directory and create a virtual envirnment:
+Change to the directory and create a virtual environment:
  ```bash 
     python -m venv venv
     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
