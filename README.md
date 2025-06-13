@@ -2,6 +2,8 @@
 
 This project is a complete machine learning pipeline built to predict **Total Revenue per Order**,**Total Order Revenue per Day** and **Late Delivery Indicator** using real-world sales data. It combines SQL-based data transformation, in-depth exploratory data analysis (EDA), supervised ML models using Python and a prediction app using Streamlit. 
 
+## App
+
 **Fully Functioning App can be accessed here: https://revenue-app.streamlit.app/**
 
 ## Features
@@ -38,5 +40,22 @@ This project is a complete machine learning pipeline built to predict **Total Re
 - **Cloud**: AWS Redshift, S3, Boto3
 - **Tools**: Jupyter Notebook, Git
 
+## Create your own App
 
-
+To create your own app using the models, follow these steps:
+ ```bash 
+    git clone https://github.com/sohaibsalman13/Sales-Revenue-Prediction-App
+ ```
+Change to the directory and create a virtual envirnment:
+ ```bash 
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+ ```
+ Install requirements:
+  ```bash 
+     pip install -r requirements.txt
+ ```
+ Make your changes to the app and run the app using:
+ ```bash 
+     streamlit run app.py
+ ```
