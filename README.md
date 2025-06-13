@@ -2,6 +2,8 @@
 
 This project is a complete machine learning pipeline built to predict **Total Revenue per Order**,**Total Order Revenue per Day** and **Late Delivery Indicator** using real-world sales data. It combines SQL-based data transformation, in-depth exploratory data analysis (EDA), supervised ML models using Python and a prediction app using Streamlit. 
 
+**Fully Functioning App can be accessed here: https://revenue-app.streamlit.app/**
+
 ## Features
 
 **Data**: The raw input dataset for the models is the real world supermarket data from Brazil (2016-2018).
