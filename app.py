@@ -36,7 +36,7 @@ if model_choice == "Revenue per Day Predictor":
     with col1:
         num_of_items2 = st.number_input("Number of Items per Day", min_value=75, key="num_items2")
     with col2:
-        avg_price_per_item2 = st.number_input("Average Price per Item per Day", min_value=4000.0, key="avg_price2")
+        avg_price_per_item2 = st.number_input("Total Average Price per Item per Day", min_value=4000.0, key="avg_price2")
     with col3:
         freight_value2 = np.clip(np.random.normal(loc=2367, scale=500), 1000, 3000)
     with col4:
