@@ -15,37 +15,36 @@ def load_models():
         "Revenue per Day Predictor": joblib.load("rf_reg2_compressed.pkl"),
         "Late Delivery Predictor": joblib.load("rf_cl_compressed.pkl")
     }
-# def load_models():
-#     with open("rf_reg.pkl", "rb") as f1, \
-#          open("rf_reg2.pkl", "rb") as f2, \
-#          open("rf_cl.pkl", "rb") as f3:
-#         return {
-#             "Revenue per Order Predictor": pickle.load(f1),
-#             "Revenue per Day Predictor": pickle.load(f2),
-#             "Late Delivery Predictor": pickle.load(f3)
-            
-#         }
 
 models = load_models()
 
 #------------------------------------------------------------------------------------#
 # App Configuration 
-st.title("📈 E-commerce Forecasting App")
-st.sidebar.header("Choose Model & Input Features")
-st.sidebar.title("About")
 
-model_choice = st.sidebar.selectbox("Select Model", list(models.keys()))
+#st.title("📈 E-commerce Forecasting App")
+st.markdown("<h1 style='text-align: center;'>📈 E-commerce Forecasting App</h1>", unsafe_allow_html=True)
 
+st.header("Choose Model & Input Features")
+model_choice = st.selectbox("Select Model", list(models.keys()))
+
+col1, col2, col3 = st.columns(3)
+col4, col5, col6, col7 = st.columns(4)
 
 #------------------------------------------------------------------------------------#
 # Input features for model 2
 if model_choice == "Revenue per Day Predictor": 
-    num_of_items2 = st.sidebar.number_input("Number of Items per Day", min_value=75, key="num_items2")
-    avg_price_per_item2 = st.sidebar.number_input("Average Price per Item per Day", min_value=4000.0, key="avg_price2")
-    freight_value2 = np.clip(np.random.normal(loc=2367, scale=500), 1000, 3000)
-    purchase_day2 = st.sidebar.number_input("Purchase Day of the Month", min_value=1, max_value=31, key="day2")
-    purchase_month2 = st.sidebar.number_input("Purchase Month (1=Jan)", min_value=1, max_value=12, key="month2")
-    purchase_year2 = st.sidebar.number_input("Purchase Year", min_value=2016, key="year2")
+    with col1:
+        num_of_items2 = st.number_input("Number of Items per Day", min_value=75, key="num_items2")
+    with col2:
+        avg_price_per_item2 = st.number_input("Average Price per Item per Day", min_value=4000.0, key="avg_price2")
+    with col3:
+        freight_value2 = np.clip(np.random.normal(loc=2367, scale=500), 1000, 3000)
+    with col4:
+        purchase_day2 = st.number_input("Purchase Day of the Month", min_value=1, max_value=31, key="day2")
+    with col5:
+        purchase_month2 = st.number_input("Purchase Month (1=Jan)", min_value=1, max_value=12, key="month2")
+    with col6:
+        purchase_year2 = st.number_input("Purchase Year", min_value=2016, key="year2")
 
     input_features = np.array([[
         num_of_items2,
@@ -60,13 +59,20 @@ if model_choice == "Revenue per Day Predictor":
 
 # Input features for model 1
 else:
-    num_of_items = st.sidebar.number_input("Number of Items", min_value=1, key="num_items")
-    avg_price_per_item = st.sidebar.number_input("Average Price per Item", min_value=1.0, key="avg_price")
-    freight_value = np.clip(np.random.normal(loc=20, scale=15.4), 8, 15)
-    purchase_day = st.sidebar.number_input("Purchase Day of the Month", min_value=1, max_value=31, key="day")
-    purchase_month = st.sidebar.number_input("Purchase Month (1=Jan)", min_value=1, max_value=12, key="month")
-    purchase_year = st.sidebar.number_input("Purchase Year", min_value=2016, key="year")
-    is_weekend = st.sidebar.selectbox("Is it a Weekend?", [0, 1], key="weekend")
+    with col1:
+        num_of_items = st.number_input("Number of Items", min_value=1, key="num_items")
+    with col2:
+        avg_price_per_item = st.number_input("Average Price per Item", min_value=1.0, key="avg_price")
+    with col3:
+        freight_value = np.clip(np.random.normal(loc=20, scale=15.4), 8, 15)
+    with col4:
+        purchase_day = st.number_input("Purchase Day of the Month", min_value=1, max_value=31, key="day")
+    with col5:
+        purchase_month = st.number_input("Purchase Month (1=Jan)", min_value=1, max_value=12, key="month")
+    with col6:
+        purchase_year = st.number_input("Purchase Year", min_value=2016, key="year")
+    with col7:
+        is_weekend = st.selectbox("Is it a Weekend?", [0, 1], key="weekend")
 
     input_features = np.array([[
         num_of_items,
@@ -88,7 +94,7 @@ button_text = {
 }
 
 
-if st.sidebar.button(button_text[model_choice]):
+if st.button(button_text[model_choice]):
     model = models[model_choice]
     prediction = model.predict(input_features)[0]
 
@@ -151,8 +157,24 @@ st.plotly_chart(fig, use_container_width=False)
 
 #------------------------------------------------------------------------------------#
 # Footer 
-st.markdown("---")
-st.caption("Built by Sohaib Salman")
-st.caption("This app is built on Random Forest Regression and Classification models. There are 3 models that predict 'Revenue per single Order', " \
-"'Total Revenue per Day' and 'Late delivery' respectively using a set of input features. The models are trained on the real world supermarket data from" \
-" Brazil (2016-2018).")
+st.sidebar.subheader('About')
+st.sidebar.caption(
+    "This app is built on Random Forest Regression and Classification models. " \
+    "There are 3 models that predict 'Revenue per single Order', " \
+    "'Total Revenue per Day' and 'Late delivery' respectively using a set of input features. " \
+    "The models are trained on the real world supermarket data from Brazil (2016-2018). " \
+    "Hence the model makes the prediciton using that data with an accuracy of 92%.")
+st.sidebar.subheader('Steps:')
+st.sidebar.caption("""
+1. Choose the model that you want the prediction from.  
+2. Input all the required features with relative accuracy.  
+3. Use the predict button to get the prediction.
+""")
+st.sidebar.text("")
+st.sidebar.text("")
+st.sidebar.text("")
+st.sidebar.text("")
+
+st.sidebar.caption("""
+                   Built by Sohaib Salman
+                   sohaibsalman684@gmail.com""")

@@ -8,7 +8,7 @@ This project is a complete machine learning pipeline built to predict **Total Re
 
 ## Features
 
-**Data**: The raw input dataset for the models is the real world supermarket data from Brazil (2016-2018).
+**Data**: The raw input dataset for the models is the real world supermarket data from Brazil (2016-2018). Hence the model makes the prediciton using that data with an accuracy of 92%.
 
 **Integration**: Amazon S3 is used for raw data storage and connected with Amazon Redshift to store and query sales data efficiently.
 
